@@ -41,7 +41,7 @@ class SimpleCNN(nn.Module):
 
 def train(rank, world_size, distributed):
     transform = transforms.Compose([transforms.ToTensor()])
-    train_dataset = datasets.FashionMNIST(root="./data", train=True, download=True, transform=transform)
+    train_dataset = datasets.FashionMNIST(root="../dataset", train=True, download=True, transform=transform)
 
     if distributed:
         sampler = DistributedSampler(train_dataset, num_replicas=world_size, rank=rank, shuffle=True)
